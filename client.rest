@@ -1,0 +1,47 @@
+@baseUrl = http://localhost:3000
+
+#Recados
+###
+GET {{baseUrl}}/recados/?limit=10&offset=10&user=andrey
+###
+POST {{baseUrl}}/recados/
+Content-Type: application/json
+
+{
+    "recado": "Este é o recado que eu estou enviando",
+    "nova chave": "outro valor"
+}
+###
+PATCH  {{baseUrl}}/recados/1
+Content-Type: application/json
+
+{
+    "recado": "Este é o recado que eu estou enviando.",
+    "actualizar": true
+}
+
+###
+DELETE  {{baseUrl}}/recados/1
+
+### AppControllerGetHello
+
+# @name AppControllerGetHello
+
+GET {{baseUrl}}/home/hello
+
+### ExemploDeRota
+
+# @name ExemploRota
+GET {{baseUrl}}/home/exemplo
+
+### ConceitosManualControllerHome
+
+# @name ConceitosManualControllerHome
+
+GET {{baseUrl}}/conceitos-manual/
+
+### ConceitosAutomaticoControllerHome
+
+# @name ConceitosAutomaticoControllerHome
+
+GET {{baseUrl}}/conceitos-automatico/
