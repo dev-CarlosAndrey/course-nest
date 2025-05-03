@@ -32,7 +32,7 @@ export class RecadosService {
     return this.recados;
   }
 
-  findOne(id: string) {
+  findOne(id: number) {
     const recado = this.recados.find((item) => item.id === +id);
 
     if (recado) return recado;
@@ -73,9 +73,9 @@ export class RecadosService {
     return this.recados[recadoExistenteIndex];
   }
 
-  remove(id: string) {
+  remove(id: number) {
     const recadoExistenteIndex = this.recados.findIndex(
-      (item) => item.id === +id,
+      (item) => item.id === id,
     );
 
     if (recadoExistenteIndex < 0) {
