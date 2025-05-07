@@ -1,12 +1,21 @@
 import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
-import { ConceitosAutomaticoModule } from 'src/conceitos-automatico/conceitos-automatico.module';
-import { ConceitosManualModule } from 'src/conceitos-manual/conceitos-manual.module';
+
 import { RecadosModule } from 'src/recados/recados.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [ConceitosAutomaticoModule, ConceitosManualModule, RecadosModule],
+  imports: [TypeOrmModule.forRoot({
+    type: 'postgres',
+    host: 'localhost',
+    port: 5432,
+    username: 'postgres',
+    database: 'postgres',
+    password: '123456',
+    autoLoadEntities: true,
+    synchronize: true,
+  }), RecadosModule],
   controllers: [AppController],
   providers: [AppService],
 })
