@@ -63,30 +63,24 @@ export class RecadosService {
     return this.recadoRepository.save(recado);
   }
 
-  update(id: string, updateRecadoDto: UpdateRecadoDto) {
-    const recadoExistenteIndex = this.recados.findIndex(
-      (item) => item.id === +id,
-    );
-
-    if (recadoExistenteIndex < 0) {
-      this.throwNotFoundError();
-    }
-
-    const recadoExistente = this.recados[recadoExistenteIndex];
-
-    this.recados[recadoExistenteIndex] = {
-      ...recadoExistente,
-      ...updateRecadoDto,
-    };
-
-    return this.recados[recadoExistenteIndex];
-  }
-
-  async remove(id: number) {
-   const recado = await this.recadoRepository.findOneBy({ id })
+  async update(id: number, updateRecadoDto: UpdateRecadoDto) {
+       const recado = await this.recadoRepository.preload({ 
+        id,
+        ...updateRecadoDto
+        })
 
    if(!recado) return this.throwNotFoundError();
 
-   return this.recadoRepository.remove(recado);
+   return this.recadoRepository.save(recado);
 }
+
+  async remove(id: number) {
+    const recado = await this.recadoRepository.findOneBy({
+      id,
+    });
+
+    if (!recado) return this.throwNotFoundError();
+
+    return this.recadoRepository.remove(recado);
+  }
 }
