@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE  {{baseUrl}}/recados/2/
+DELETE  {{baseUrl}}/recados/3/
 
 ### AppControllerGetHello
 
