@@ -12,7 +12,7 @@ POST {{baseUrl}}/recados/
 Content-Type: application/json
 
 {
-    "texto": " 2 Novo recado",
+    "texto": "2 Novo recado",
     "de": "Joana",
     "para": "João"
 }
