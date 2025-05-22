@@ -17,17 +17,53 @@ Content-Type: application/json
     "para": "João"
 }
 
-###
+### Atualiza um recado
 PATCH  {{baseUrl}}/recados/3
 Content-Type: application/json
 
 {
-    "texto": "testando novo recado",
-    "lido": true
+    "lido": false
 }
 
-###
+### Deleta um recado
 DELETE  {{baseUrl}}/recados/3/
+
+
+#
+
+
+#Pessoas
+### Lista todas as pessoas
+GET {{baseUrl}}/pessoas/
+
+### Lista uma pessoa
+GET {{baseUrl}}/pessoas/2
+
+### Cria uma pessoa
+POST {{baseUrl}}/pessoas/
+Content-Type: application/json
+
+{
+    "email": "email2@email.com",
+    "password": "123456",
+    "nome": "carlos"
+}
+
+### Atualiza uma pessoa
+PATCH  {{baseUrl}}/pessoas/7
+Content-Type: application/json
+
+{
+    "password": "654321",
+    "nome": "João"
+}
+
+### Deleta uma pessoa
+DELETE  {{baseUrl}}/pessoas/6/
+
+
+#
+
 
 ### AppControllerGetHello
 

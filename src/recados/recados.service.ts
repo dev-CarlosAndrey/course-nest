@@ -17,19 +17,6 @@ export class RecadosService {
     private readonly recadoRepository: Repository<Recado>
   ) {}
 
-
-  private lastId = 1;
-  private recados: Recado[] = [
-    {
-      id: 1,
-      texto: 'Este é um recado de teste',
-      de: 'Joana',
-      para: 'João',
-      lido: false,
-      data: new Date(),
-    },
-  ];
-
   throwNotFoundError() {
     // throw new HttpException('Recado não encontrado.',
     //      HttpStatus.NOT_FOUND);
@@ -64,9 +51,13 @@ export class RecadosService {
   }
 
   async update(id: number, updateRecadoDto: UpdateRecadoDto) {
+       const partialUpdateRecadoDto = {
+        lido: updateRecadoDto?.lido,
+        texto: updateRecadoDto?.texto,
+       } 
        const recado = await this.recadoRepository.preload({ 
         id,
-        ...updateRecadoDto
+        ...partialUpdateRecadoDto,
         })
 
    if(!recado) return this.throwNotFoundError();
